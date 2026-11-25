@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بافرونا — لأدوات الحلاقة الفاخرة والصالونات</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    globalThis.tailwind = globalThis.tailwind || {};
+    globalThis.tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#D4AF37',
+            'on-primary': '#121212',
+            'primary-hover': '#E9C349',
+            'primary-container': '#3C2F00',
+            'on-primary-container': '#FFE088',
+            'secondary': '#BEAA74',
+            'on-secondary': '#121212',
+            'secondary-container': '#3C2F05',
+            'on-secondary-container': '#F7E1A6',
+            'surface': '#121212',
+            'on-surface': '#F5F5F5',
+            'surface-container-low': '#181818',
+            'surface-container': '#1E1E1E',
+            'surface-container-high': '#2A2929',
+            'surface-container-highest': '#363535',
+            'on-surface-variant': '#ADABAA',
+            'outline': '#4D4635',
+            'outline-variant': '#363020',
+            'success': '#81C784',
+            'on-success': '#121212',
+            'error': '#FFB4AB',
+            'on-error': '#410002',
+            'error-container': '#93000A',
+            'on-error-container': '#FFDAD6',
+          },
+          borderRadius: {
+            'sm': '4px',
+            'DEFAULT': '6px',
+            'md': '8px',
+            'lg': '12px',
+            'xl': '16px',
+            'full': '9999px',
+          },
+          spacing: {
+            'section': '56px',
+          },
+          fontFamily: {
+            'display': ['"Cairo"', '"Tajawal"', 'sans-serif'],
+            'headline': ['"Cairo"', '"Tajawal"', 'sans-serif'],
+            'title': ['"Cairo"', '"Tajawal"', 'sans-serif'],
+            'body': ['"Tajawal"', '"Cairo"', 'sans-serif'],
+            'label': ['"Cairo"', '"Tajawal"', 'sans-serif'],
+            'mono': ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&family=Tajawal:wght@400;500;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Tajawal', 'Cairo', sans-serif;
+    }
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    dialog::backdrop {
+      background-color: rgba(12, 12, 12, 0.84);
+      backdrop-filter: blur(4px);
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #121212; }
+    ::-webkit-scrollbar-thumb { background: #363020; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary">
+  <div class="min-h-screen flex flex-col bg-surface">
+
+    <!-- Top Announcement / Quick Contact Bar -->
+    <div class="bg-primary-container/70 border-b border-outline-variant text-on-primary-container text-xs py-2 px-4">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm text-primary">verified</span>
+          <span>أكثر من <strong class="text-primary">150 منتج حلاقة</strong> أصلي للصالونات والمحترفين — توصيل لجميع المحافظات</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a id="topbar-wa-link" href="https://wa.me/201554451059" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-primary hover:underline font-semibold">
+            <span class="material-symbols-outlined text-sm">chat</span>
+            <span>فودافون كاش وواتساب: <span id="topbar-phone" class="font-mono" dir="ltr">01554451059</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-surface/95 backdrop-blur border-b border-outline-variant">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+        <!-- Brand Logo (Custom Bavrona SVG Logo) -->
+        <a href="#home" class="flex items-center gap-3 shrink-0 group">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-md border border-primary/80 bg-gradient-to-br from-primary-container to-surface text-primary shadow-sm group-hover:border-primary transition-colors">
+            <!-- Custom Bavrona Crest SVG -->
+            <svg viewBox="0 0 40 40" class="w-7 h-7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 13L13 8L20 14L27 8L32 13L29 20H11L8 13Z" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round" fill="#D4AF37" fill-opacity="0.18"/>
+              <path d="M13 24L27 34M27 24L13 34" stroke="#D4AF37" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="12" cy="34.5" r="2.2" stroke="#D4AF37" stroke-width="1.8"/>
+              <circle cx="28" cy="34.5" r="2.2" stroke="#D4AF37" stroke-width="1.8"/>
+            </svg>
+          </span>
+          <div class="flex flex-col">
+            <span id="header-site-name" class="font-headline text-xl font-extrabold tracking-wide text-on-surface group-hover:text-primary transition-colors">بافرونا</span>
+            <span id="header-site-subtitle" class="font-label text-[11px] text-on-surface-variant">لأدوات الحلاقة الفاخرة</span>
+          </div>
+        </a>
+
+        <!-- Primary Navigation Links -->
+        <nav aria-label="التنقل الرئيسي" class="hidden lg:flex items-center gap-5">
+          <a href="#home" class="font-label text-sm font-semibold text-primary hover:text-primary-hover transition-colors">الرئيسية</a>
+          <a href="#categories" class="font-label text-sm font-semibold text-on-surface-variant hover:text-on-surface transition-colors">الأقسام</a>
+          <a href="#catalog-section" class="font-label text-sm font-semibold text-on-surface-variant hover:text-on-surface transition-colors">المنتجات (150)</a>
+          <a href="#kit-builder" class="font-label text-sm font-semibold text-on-surface-variant hover:text-on-surface transition-colors">صمّم عدتك</a>
+          <a href="#book-cut" class="font-label text-sm font-semibold text-on-surface-variant hover:text-on-surface transition-colors">حجز موعد</a>
+          <a href="#contact-footer" class="font-label text-sm font-semibold text-on-surface-variant hover:text-on-surface transition-colors">تواصل وكاش</a>
+        </nav>
+
+        <!-- Search, Admin Panel, Cart & Mobile Nav -->
+        <div class="flex items-center gap-2.5 shrink-0">
+          <!-- Header Search -->
+          <div class="hidden md:flex items-center bg-surface-container border border-outline-variant focus-within:border-primary rounded px-3 py-1.5 gap-2 w-56 transition-colors">
+            <span class="material-symbols-outlined text-lg text-on-surface-variant">search</span>
+            <input id="header-search" type="search" placeholder="ابحث: ماكينة، موس، مقص..." aria-label="ابحث عن المنتجات" class="bg-transparent border-none p-0 text-sm font-body text-on-surface placeholder:text-on-surface-variant focus:ring-0 w-full">
+          </div>
+
+          <!-- Admin Panel Button (No-Code Control Panel) -->
+          <button id="open-admin-btn" type="button" title="لوحة التحكم وتعديل الأسعار والمنتجات" class="inline-flex items-center gap-1.5 px-3 py-2 rounded bg-surface-container-high hover:bg-surface-container-highest text-primary border border-outline hover:border-primary transition-colors cursor-pointer text-xs sm:text-sm font-semibold">
+            <span class="material-symbols-outlined text-lg">tune</span>
+            <span class="hidden sm:inline">لوحة التحكم</span>
+          </button>
+
+          <!-- Cart Trigger with Counter Badge -->
+          <button id="open-cart-btn" type="button" aria-label="فتح سلة المشتريات" class="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-on-primary hover:bg-primary-hover transition-colors cursor-pointer shadow-md">
+            <span class="material-symbols-outlined text-xl">shopping_bag</span>
+            <span id="cart-count-badge" class="absolute -top-1.5 -left-1.5 inline-flex items-center justify-center min-w-[21px] h-5 px-1.5 rounded-full bg-surface text-primary border border-primary font-mono text-xs font-bold tabular-nums">0</span>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" type="button" aria-label="قائمة التنقل" class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded bg-surface-container-high text-on-surface border border-outline-variant cursor-pointer">
+            <span class="material-symbols-outlined text-xl">menu</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobile-nav" class="hidden lg:hidden border-t border-outline-variant bg-surface-container-low px-4 py-4 space-y-3">
+        <div class="flex items-center bg-surface-container border border-outline-variant rounded px-3 py-2 gap-2">
+          <span class="material-symbols-outlined text-lg text-on-surface-variant">search</span>
+          <input id="mobile-search" type="search" placeholder="ابحث عن أي منتج حلاقة..." class="bg-transparent border-none p-0 text-sm text-on-surface placeholder:text-on-surface-variant focus:ring-0 w-full">
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-sm font-semibold">
+          <a href="#home" class="mobile-nav-link px-3 py-2 rounded bg-surface-container border border-outline-variant text-primary">الرئيسية</a>
+          <a href="#categories" class="mobile-nav-link px-3 py-2 rounded bg-surface-container border border-outline-variant text-on-surface">الأقسام</a>
+          <a href="#catalog-section" class="mobile-nav-link px-3 py-2 rounded bg-surface-container border border-outline-variant text-on-surface">المنتجات (150)</a>
+          <a href="#kit-builder" class="mobile-nav-link px-3 py-2 rounded bg-surface-container border border-outline-variant text-on-surface">صمّم عدتك</a>
+          <a href="#book-cut" class="mobile-nav-link px-3 py-2 rounded bg-surface-container border border-outline-variant text-on-surface">حجز موعد</a>
+          <a href="#contact-footer" class="mobile-nav-link px-3 py-2 rounded bg-surface-container border border-outline-variant text-on-surface">تواصل وكاش</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+
+      <!-- Hero Section -->
+      <section id="home" class="relative border-b border-outline-variant overflow-hidden">
+        <div class="relative min-h-[540px] lg:min-h-[600px] flex items-center">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrCRkBBMGqOAed8EE3N-H7-SYlCnn7DMe-pm5M0Z8iK22dH2HgeT8wJjUD7JxJBA7TN8ksq5AQm0eEyCBYjDKQfiLbdBSphli3I4JW9p6_dde1kunWDjPQvN0P7xaCGRRDVP-3eIeNLYqszxp9S3v2K1koE-ai4OyQswGzX4LiuijZGXv01DUKLZsqsuKAAx2-fS7NV4lCWbqvkqu-GdslEneZC_1mfSfUlGVd_8skdhvsVc8FCBiaOdlw8" alt="أدوات حلاقة فاخرة من بافرونا" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-l from-surface via-surface/90 to-surface/40"></div>
+
+          <div class="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 py-16">
+            <div class="max-w-2xl flex flex-col gap-5">
+              <span id="hero-badge" class="self-start inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-primary-container text-on-primary-container border border-outline text-xs font-bold tracking-wide">
+                منذ 2018 · متجر بافرونا الاحترافي
+              </span>
+
+              <h1 id="hero-title" class="font-display text-3xl sm:text-5xl font-extrabold text-on-surface leading-tight">
+                فولاذ دقيق.. وفخامة حلاقة لا تُضاهى
+              </h1>
+
+              <p id="hero-desc" class="font-body text-base sm:text-lg text-on-surface-variant leading-relaxed max-w-prose">
+                أرقى ماكينات الحلاقة اللاسلكية، الأمواس اليابانية، ومستلزمات الصالونات الفاخرة في مكان واحد — مع حجز فوري عبر واتساب.
+              </p>
+
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <a href="#catalog-section" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded bg-primary text-on-primary hover:bg-primary-hover font-bold transition-colors cursor-pointer">
+                  <span class="material-symbols-outlined text-lg">storefront</span>
+                  <span>تصفح الـ 150 منتج</span>
+                </a>
+
+                <a href="#book-cut" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded border border-primary text-primary bg-surface/70 hover:bg-primary-container font-bold transition-colors cursor-pointer">
+                  <span class="material-symbols-outlined text-lg">calendar_month</span>
+                  <span>احجز جلسة حلاقة</span>
+                </a>
+              </div>
+
+              <!-- Trust / Spec Bar -->
+              <div class="grid grid-cols-3 gap-4 sm:gap-6 pt-6 mt-2 border-t border-outline-variant max-w-lg">
+                <div>
+                  <p id="hero-product-count" class="font-mono text-lg font-bold text-primary tabular-nums">150+</p>
+                  <p class="text-xs text-on-surface-variant">منتج حلاقة أصلي</p>
+                </div>
+                <div>
+                  <p class="font-mono text-lg font-bold text-primary tabular-nums">4.9 ★</p>
+                  <p class="text-xs text-on-surface-variant">تقييم الحلاقين</p>
+                </div>
+                <div>
+                  <p class="font-mono text-lg font-bold text-primary tabular-nums">واتساب</p>
+                  <p class="text-xs text-on-surface-variant">حجز ودفع فودافون كاش</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Showcase -->
+      <section id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">أقسام متجر بافرونا</p>
+            <h2 class="font-headline text-2xl sm:text-3xl font-bold text-on-surface">تسوق حسب التخصص والاحترافية</h2>
+          </div>
+          <p class="text-sm text-on-surface-variant max-w-md">
+            اضغط على أي قسم لعرض جميع منتجاته وأنواعه بالأسعار مباشرة.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <button type="button" data-filter-cat="ماكينات حلاقة وتحديد" class="cat-card group text-right bg-surface-container border border-outline-variant hover:border-primary rounded-lg overflow-hidden flex flex-col transition-colors cursor-pointer">
+            <div class="overflow-hidden h-44 bg-surface-container-high w-full">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrAakdX2aWOZpP0DKD_hlUUi9EYCq-XTwWHQYdWoMANFb05rAXFlKvbzxfcfcVbEMXHXrwvvMY-Xfvb-yV0lAbfnupy7RlbUNgQVKfebPqsseeSrd-hCFRVEcgHjQ_QYpFpZ8wZUJSWLeED6FPiw237LrVgW8eZy7ZGI8zlbN_0EOqLw3QZGpSD3GKv49AuVnfwu3acKyOp5t0dqOyXbI4n16Bwone-Gi35w2Pm3cbat_FvXPd4" alt="ماكينات حلاقة وتحديد" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-4 flex items-center justify-between gap-3 w-full">
+              <div>
+                <h3 class="font-headline text-lg font-bold text-on-surface group-hover:text-primary">ماكينات حلاقة وتحديد</h3>
+                <p class="text-xs text-on-surface-variant mt-0.5">وال، بيبي ليس، موزر، جي آر إل، في جي آر، كيمي</p>
+              </div>
+              <span class="material-symbols-outlined text-primary">arrow_back</span>
+            </div>
+          </button>
+
+          <button type="button" data-filter-cat="أمواس وشفرات حلاقة" class="cat-card group text-right bg-surface-container border border-outline-variant hover:border-primary rounded-lg overflow-hidden flex flex-col transition-colors cursor-pointer">
+            <div class="overflow-hidden h-44 bg-surface-container-high w-full">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrDaZCbQTt3AQ2lHURm6tuDZH4xTfaMPy5AmJs7XlK4jMVt95W-8GWaygs37_hmG2vob02MNPQSLpr_J5EUBgcghD7OQg8_1zx3aECHdmuKA9pWFwMvGdL13U2TF4jeD-5VoFufwNgyaeZZdjv2XRoycoa7mhS9Wl47YR5vbbs-RRgJrpinKrN7N5wclU0S6Eh-Ky3CQPjNMZ0aAhtEVyipaBiPIFblBnJqtltTL-oAf8HEd" alt="أمواس وشفرات حلاقة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-4 flex items-center justify-between gap-3 w-full">
+              <div>
+                <h3 class="font-headline text-lg font-bold text-on-surface group-hover:text-primary">أمواس وشفرات حلاقة</h3>
+                <p class="text-xs text-on-surface-variant mt-0.5">فيذر اليابانية، ديربي، أسترا، باركر، دوفو</p>
+              </div>
+              <span class="material-symbols-outlined text-primary">arrow_back</span>
+            </div>
+          </button>
+
+          <button type="button" data-filter-cat="مقصات حلاقة وتخفيف" class="cat-card group text-right bg-surface-container border border-outline-variant hover:border-primary rounded-lg overflow-hidden flex flex-col transition-colors cursor-pointer">
+            <div class="overflow-hidden h-44 bg-surface-container-high w-full">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCWX1ZCCFC7qXPBn7ov921svpmEYe10FNkuPEPNinF7DE2o_dbJDSNJItyeOikFDRtspeCuRewvnUGHJhudbAG2UxVcSA2ZPcFXgYWgT8JI99VGkcj55I7H8TcPs_GktRIOcrV0Q_F-mRnXBoOWVMV6PIQiftVqPlc4cA_loj1tKCmVbvUaznQl6cDQbgcCvUJabk42SYl1GbuIadq7d3b2EKf86IDhyz_6w1e4ixZNOyaq" alt="مقصات حلاقة وتخفيف" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-4 flex items-center justify-between gap-3 w-full">
+              <div>
+                <h3 class="font-headline text-lg font-bold text-on-surface group-hover:text-primary">مقصات حلاقة وتخفيف</h3>
+                <p class="text-xs text-on-surface-variant mt-0.5">ميزوتاني، جاجوار، كاشو، ماتسوي، جويل</p>
+              </div>
+              <span class="material-symbols-outlined text-primary">arrow_back</span>
+            </div>
+          </button>
+
+          <button type="button" data-filter-cat="العناية باللحية والشعر" class="cat-card group text-right bg-surface-container border border-outline-variant hover:border-primary rounded-lg overflow-hidden flex flex-col transition-colors cursor-pointer">
+            <div class="overflow-hidden h-44 bg-surface-container-high w-full">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrD925ic2no7s6CTw7PsX2_Yi6brtB6Y5PRWv7XnkpBFbVmvQPjJOJPE_KXIi186opqrtywCH_QU-d41ebmRVA0S4PyLbKzUmc4o4jPiI3jgxJ4ePXShsOwBdKQjjwn8B9lmM-r_tbWE2N_s4vdQM4YFTJe1Q78QVpEW5htBzSXNrfAYtDxUZHcFCl3h2pMpSMKaZetjpsUVYT9QiZE15w9hx705n8E5LWLIJ92_DGQLTs4qXGZx" alt="العناية باللحية والشعر" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-4 flex items-center justify-between gap-3 w-full">
+              <div>
+                <h3 class="font-headline text-lg font-bold text-on-surface group-hover:text-primary">العناية باللحية والشعر</h3>
+                <p class="text-xs text-on-surface-variant mt-0.5">زيوت لحية، كلاي، واكس، جل، كولونيا، كريمات</p>
+              </div>
+              <span class="material-symbols-outlined text-primary">arrow_back</span>
+            </div>
+          </button>
+
+          <button type="button" data-filter-cat="أدوات ومستلزمات الصالون" class="cat-card group text-right bg-surface-container border border-outline-variant hover:border-primary rounded-lg overflow-hidden flex flex-col transition-colors cursor-pointer">
+            <div class="overflow-hidden h-44 bg-surface-container-high w-full">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrDuWpNGZmtp_2KfTRTShDW_ZHwEPx18wlnZ4Wu8lGiTVqkAODSobun7m4M0pT8vE1mVwXDYsVVKpa0nk1BVCzk8eYPMgnqdbC9RXg1veQXL_mbhoH_foZHgsyaQYUEjMtyfyobUKdAB8-3reQbKpDPA9HGh1A3Oigs3bRnFUnyz0-3RlMNq9OGDO2YmVpWBSJ5qSBVMHkfdCsPNryOaGgARf8wFYhW8SGRid8CWv0Z6WSrEI40aH1qf" alt="أدوات ومستلزمات الصالون" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-4 flex items-center justify-between gap-3 w-full">
+              <div>
+                <h3 class="font-headline text-lg font-bold text-on-surface group-hover:text-primary">أدوات ومستلزمات الصالون</h3>
+                <p class="text-xs text-on-surface-variant mt-0.5">مرايل، فرش، أمشاط، بخاخات، أجهزة تعقيم وبخار</p>
+              </div>
+              <span class="material-symbols-outlined text-primary">arrow_back</span>
+            </div>
+          </button>
+
+          <button type="button" data-filter-cat="كراسي وتجهيزات الصالون" class="cat-card group text-right bg-surface-container border border-outline-variant hover:border-primary rounded-lg overflow-hidden flex flex-col transition-colors cursor-pointer">
+            <div class="overflow-hidden h-44 bg-surface-container-high w-full">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCRkBBMGqOAed8EE3N-H7-SYlCnn7DMe-pm5M0Z8iK22dH2HgeT8wJjUD7JxJBA7TN8ksq5AQm0eEyCBYjDKQfiLbdBSphli3I4JW9p6_dde1kunWDjPQvN0P7xaCGRRDVP-3eIeNLYqszxp9S3v2K1koE-ai4OyQswGzX4LiuijZGXv01DUKLZsqsuKAAx2-fS7NV4lCWbqvkqu-GdslEneZC_1mfSfUlGVd_8skdhvsVc8FCBiaOdlw8" alt="كراسي وتجهيزات الصالون" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+            <div class="p-4 flex items-center justify-between gap-3 w-full">
+              <div>
+                <h3 class="font-headline text-lg font-bold text-on-surface group-hover:text-primary">كراسي وتجهيزات الصالون</h3>
+                <p class="text-xs text-on-surface-variant mt-0.5">كراسي هيدروليك، مرايا LED، عربات أدوات، حقائب</p>
+              </div>
+              <span class="material-symbols-outlined text-primary">arrow_back</span>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Full 150-Product Searchable Catalog with Price Controls -->
+      <section id="catalog-section" class="bg-surface-container-low border-y border-outline-variant py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">كتالوج بافرونا الكامل</p>
+              <h2 class="font-headline text-2xl sm:text-3xl font-bold text-on-surface">جميع منتجات الحلاقة بالأسعار</h2>
+            </div>
+            <div class="text-sm text-on-surface-variant">
+              عرض <span id="results-count" class="font-mono font-bold text-primary">150</span> منتج
+            </div>
+          </div>
+
+          <!-- Search & Price Adjustment Toolbar -->
+          <div class="bg-surface-container border border-outline-variant rounded-xl p-4 sm:p-5 mb-6 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+              <!-- Main Search Input -->
+              <div class="md:col-span-5 relative">
+                <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary text-xl">search</span>
+                <input id="catalog-search" type="search" placeholder="ابحث عن أي منتج (مثلاً: ماكينة، موس، مقص، زيت، جل...)" class="w-full bg-surface-container-high border border-outline-variant focus:border-primary rounded-lg pr-10 pl-4 py-2.5 text-sm text-on-surface placeholder:text-on-surface-variant focus:ring-1 focus:ring-primary">
+              </div>
+
+              <!-- Category Dropdown -->
+              <div class="md:col-span-3">
+                <select id="category-select" aria-label="تصفية حسب القسم" class="w-full bg-surface-container-high border border-outline-variant focus:border-primary rounded-lg px-3 py-2.5 text-sm text-on-surface focus:ring-1 focus:ring-primary">
+                  <option value="all">كل الأقسام (150+)</option>
+                  <option value="ماكينات حلاقة وتحديد">ماكينات حلاقة وتحديد</option>
+                  <option value="أمواس وشفرات حلاقة">أمواس وشفرات حلاقة</option>
+                  <option value="مقصات حلاقة وتخفيف">مقصات حلاقة وتخفيف</option>
+                  <option value="العناية باللحية والشعر">العناية باللحية والشعر</option>
+                  <option value="أدوات ومستلزمات الصالون">أدوات ومستلزمات الصالون</option>
+                  <option value="كراسي وتجهيزات الصالون">كراسي وتجهيزات الصالون</option>
+                </select>
+              </div>
+
+              <!-- Price Sort -->
+              <div class="md:col-span-2">
+                <select id="sort-select" aria-label="ترتيب حسب السعر" class="w-full bg-surface-container-high border border-outline-variant focus:border-primary rounded-lg px-3 py-2.5 text-sm text-on-surface focus:ring-1 focus:ring-primary">
+                  <option value="default">الترتيب الافتراضي</option>
+                  <option value="price-asc">السعر: من الأقل للأعلى</option>
+                  <option value="price-desc">السعر: من الأعلى للأقل</option>
+                  <option value="rating-desc">الأعلى تقييماً</option>
+                </select>
+              </div>
+
+              <!-- Reset Filters -->
+              <div class="md:col-span-2">
+                <button id="reset-filters-btn" type="button" class="w-full py-2.5 px-3 rounded-lg border border-outline text-sm font-semibold text-on-surface-variant hover:text-primary hover:border-primary transition-colors cursor-pointer">
+                  إعادة ضبط البحث
+                </button>
+              </div>
+            </div>
+
+            <!-- Price Range Slider + Quick Search Chips -->
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pt-3 border-t border-outline-variant">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs text-on-surface-variant font-semibold ml-1">بحث سريع:</span>
+                <button type="button" data-quick-search="ماكينة" class="quick-chip px-2.5 py-1 rounded-full text-xs bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface cursor-pointer">ماكينات</button>
+                <button type="button" data-quick-search="موس" class="quick-chip px-2.5 py-1 rounded-full text-xs bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface cursor-pointer">أمواس</button>
+                <button type="button" data-quick-search="شفرات" class="quick-chip px-2.5 py-1 rounded-full text-xs bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface cursor-pointer">شفرات</button>
+                <button type="button" data-quick-search="مقص" class="quick-chip px-2.5 py-1 rounded-full text-xs bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface cursor-pointer">مقصات</button>
+                <button type="button" data-quick-search="زيت" class="quick-chip px-2.5 py-1 rounded-full text-xs bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface cursor-pointer">زيوت لحية</button>
+                <button type="button" data-quick-search="كريم" class="quick-chip px-2.5 py-1 rounded-full text-xs bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface cursor-pointer">كريمات</button>
+                <button type="button" data-quick-search="مريلة" class="quick-chip px-2.5 py-1 rounded-full text-xs bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface cursor-pointer">مرايل</button>
+                <button type="button" data-quick-search="كرسي" class="quick-chip px-2.5 py-1 rounded-full text-xs bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface cursor-pointer">كراسي</button>
+              </div>
+
+              <div class="flex items-center gap-3 min-w-[260px]">
+                <label for="max-price-range" class="text-xs text-on-surface-variant whitespace-nowrap">أقصى سعر:</label>
+                <input id="max-price-range" type="range" min="100" max="25000" step="50" value="25000" class="w-full accent-[#D4AF37] cursor-pointer">
+                <span id="max-price-label" class="font-mono text-xs font-bold text-primary whitespace-nowrap tabular-nums">25,000 ج.م</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Load More / Show All Controls -->
+          <div id="pagination-controls" class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <button id="load-more-btn" type="button" class="px-6 py-3 rounded-lg bg-surface-container border border-primary text-primary hover:bg-primary hover:text-on-primary font-bold text-sm transition-colors cursor-pointer">
+              عرض المزيد من المنتجات
+            </button>
+            <button id="show-all-btn" type="button" class="px-6 py-3 rounded-lg bg-surface-container-high border border-outline text-on-surface hover:border-primary font-semibold text-sm transition-colors cursor-pointer">
+              عرض الكل دفعة واحدة
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Bundle / Kit Builder -->
+      <section id="kit-builder" class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <p class="text-xs font-bold uppercase tracking-widest text-primary">باقة الحلاق المتكاملة</p>
+              <span class="px-2.5 py-0.5 rounded-sm bg-primary-container text-on-primary-container border border-outline text-xs font-bold">خصم 15% تلقائي</span>
+            </div>
+            <h2 class="font-headline text-2xl sm:text-3xl font-bold text-on-surface">صمّم عدّتك الاحترافية بنفسك</h2>
+          </div>
+          <p class="text-sm text-on-surface-variant max-w-md">
+            اختر ماكينة أساسية، موس أو مقص، ومجموعة عناية لتحصل على خصم فوري 15% على الباقة كاملة.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8 flex flex-col gap-6">
+            <!-- Step 1 -->
+            <div class="bg-surface-container border border-outline-variant rounded-lg p-5">
+              <h3 class="font-title text-lg font-bold text-on-surface mb-4">1. اختر الماكينة الأساسية</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button type="button" data-kit-step="clipper" data-kit-name="بيبي ليس برو جولد إف إكس بوست+" data-kit-price="8950" class="kit-option text-right p-4 rounded-md border border-primary bg-primary-container/40 transition-colors cursor-pointer">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-title font-bold text-on-surface">بيبي ليس برو جولد إف إكس</span>
+                    <span class="font-mono text-primary font-bold tabular-nums">8,950 ج.م</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-1">هيكل معدني ذهبي · بطارية ساعتين</p>
+                </button>
+
+                <button type="button" data-kit-step="clipper" data-kit-name="وال سينيور اللاسلكية 5 ستار" data-kit-price="7200" class="kit-option text-right p-4 rounded-md border border-outline-variant bg-surface-container-high hover:border-outline transition-colors cursor-pointer">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-title font-bold text-on-surface">وال سينيور 5 ستار اللاسلكية</span>
+                    <span class="font-mono text-primary font-bold tabular-nums">7,200 ج.م</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-1">شفرة فيد جراحية · عزم دوران عالي</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-surface-container border border-outline-variant rounded-lg p-5">
+              <h3 class="font-title text-lg font-bold text-on-surface mb-4">2. اختر الموس أو المقص</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button type="button" data-kit-step="blade" data-kit-name="موس فيذر أرتيست كلوب SS" data-kit-price="4600" class="kit-option text-right p-4 rounded-md border border-primary bg-primary-container/40 transition-colors cursor-pointer">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-title font-bold text-on-surface">موس فيذر أرتيست كلوب SS</span>
+                    <span class="font-mono text-primary font-bold tabular-nums">4,600 ج.م</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-1">موس ياباني قابل للتعقيم</p>
+                </button>
+
+                <button type="button" data-kit-step="blade" data-kit-name="مقص جاجوار بريستيج 6.0" data-kit-price="4800" class="kit-option text-right p-4 rounded-md border border-outline-variant bg-surface-container-high hover:border-outline transition-colors cursor-pointer">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-title font-bold text-on-surface">مقص جاجوار بريستيج 6.0</span>
+                    <span class="font-mono text-primary font-bold tabular-nums">4,800 ج.م</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-1">فولاذ ألماني سولينجن أصلي</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-surface-container border border-outline-variant rounded-lg p-5">
+              <h3 class="font-title text-lg font-bold text-on-surface mb-4">3. اختر العناية والإكسسوار</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button type="button" data-kit-step="care" data-kit-name="طقم زيت العود وفرشاة اللحية" data-kit-price="600" class="kit-option text-right p-4 rounded-md border border-primary bg-primary-container/40 transition-colors cursor-pointer">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-title font-bold text-on-surface">طقم زيت العود وفرشاة اللحية</span>
+                    <span class="font-mono text-primary font-bold tabular-nums">600 ج.م</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-1">زيت لحية معصور على البارد + فرشاة خشبية</p>
+                </button>
+
+                <button type="button" data-kit-step="care" data-kit-name="مريلة بافرونا الفاخرة وبخاخ رذاذ" data-kit-price="545" class="kit-option text-right p-4 rounded-md border border-outline-variant bg-surface-container-high hover:border-outline transition-colors cursor-pointer">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-title font-bold text-on-surface">مريلة بافرونا وبخاخ رذاذ</span>
+                    <span class="font-mono text-primary font-bold tabular-nums">545 ج.م</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-1">مريلة مقاومة للماء + بخاخ ضباب مستمر</p>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Summary Card -->
+          <aside class="lg:col-span-4 bg-surface-container border border-outline rounded-lg p-6 lg:sticky lg:top-24">
+            <h3 class="font-headline text-xl font-bold text-on-surface mb-1">ملخص عدّتك الخاصة</h3>
+            <p class="text-xs text-on-surface-variant pb-4 border-b border-outline-variant">تشمل خصم الباقة 15%</p>
+
+            <ul class="py-4 flex flex-col gap-3 border-b border-outline-variant text-sm">
+              <li class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs text-on-surface-variant">الماكينة</p>
+                  <p id="kit-summary-clipper" class="text-on-surface font-semibold">بيبي ليس برو جولد إف إكس بوست+</p>
+                </div>
+                <span id="kit-price-clipper" class="font-mono text-on-surface tabular-nums">8,950 ج.م</span>
+              </li>
+              <li class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs text-on-surface-variant">الموس / المقص</p>
+                  <p id="kit-summary-blade" class="text-on-surface font-semibold">موس فيذر أرتيست كلوب SS</p>
+                </div>
+                <span id="kit-price-blade" class="font-mono text-on-surface tabular-nums">4,600 ج.م</span>
+              </li>
+              <li class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs text-on-surface-variant">العناية</p>
+                  <p id="kit-summary-care" class="text-on-surface font-semibold">طقم زيت العود وفرشاة اللحية</p>
+                </div>
+                <span id="kit-price-care" class="font-mono text-on-surface tabular-nums">600 ج.م</span>
+              </li>
+            </ul>
+
+            <div class="py-4 flex flex-col gap-2 text-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-on-surface-variant">السعر الأصلي</span>
+                <span id="kit-retail-total" class="font-mono text-on-surface-variant line-through tabular-nums">14,150 ج.م</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-success">توفير الباقة (15%)</span>
+                <span id="kit-discount" class="font-mono text-success tabular-nums">-2,122.50 ج.م</span>
+              </div>
+              <div class="flex items-center justify-between pt-3 mt-1 border-t border-outline-variant">
+                <span class="font-bold text-base text-on-surface">إجمالي الباقة</span>
+                <span id="kit-final-total" class="font-mono text-lg font-bold text-primary tabular-nums">12,027.50 ج.م</span>
+              </div>
+            </div>
+
+            <button id="add-kit-to-cart" type="button" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded bg-primary text-on-primary hover:bg-primary-hover font-bold transition-colors cursor-pointer">
+              <span class="material-symbols-outlined text-lg">shopping_bag</span>
+              <span>إضافة الباقة إلى السلة</span>
+            </button>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Barberia Chair Booking Banner -->
+      <section id="book-cut" class="bg-surface-container border-t border-outline-variant py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 flex flex-col gap-3">
+            <p class="text-xs font-bold uppercase tracking-widest text-primary">حجز صالون بافرونا</p>
+            <h2 class="font-headline text-2xl sm:text-3xl font-bold text-on-surface">
+              احجز جلستك الآن مع أمهر الحلاقين
+            </h2>
+            <p class="text-base text-on-surface-variant max-w-prose">
+              حلاقة فوطة ساخنة بالموس الياباني، تدريج احترافي، وتنظيف بشرة بالبخار — يصلك تأكيد الحجز مباشرة عبر واتساب.
+            </p>
+          </div>
+          <div class="lg:col-span-5 flex flex-col sm:flex-row lg:justify-end gap-3">
+            <button id="open-booking-btn" type="button" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded bg-primary text-on-primary hover:bg-primary-hover font-bold transition-colors cursor-pointer">
+              <span class="material-symbols-outlined text-lg">calendar_month</span>
+              <span>احجز موعدك عبر واتساب</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Contact, Vodafone Cash & Footer -->
+    <footer id="contact-footer" class="bg-surface border-t border-outline-variant pt-12 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-outline-variant">
+          <!-- Brand Info -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2.5">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded border border-primary bg-primary-container text-primary">
+                <svg viewBox="0 0 40 40" class="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 13L13 8L20 14L27 8L32 13L29 20H11L8 13Z" stroke="#D4AF37" stroke-width="2" fill="#D4AF37" fill-opacity="0.2"/>
+                  <path d="M13 24L27 34M27 24L13 34" stroke="#D4AF37" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span id="footer-site-name" class="font-headline text-xl font-bold text-on-surface">بافرونا</span>
+            </div>
+            <p id="footer-address" class="text-sm text-on-surface-variant">القاهرة، مصر — توصيل لجميع المحافظات</p>
+            <p id="footer-hours" class="text-sm text-on-surface-variant">يومياً من 10 صباحاً حتى 11 مساءً</p>
+          </div>
+
+          <!-- Contact Numbers -->
+          <div class="space-y-3">
+            <h3 class="font-headline text-base font-bold text-primary">أرقام التواصل والطلبات</h3>
+            <p class="text-sm text-on-surface-variant">تواصل معنا مباشرة للاستفسار أو متابعة الطلبات:</p>
+            <div class="flex flex-col gap-2 text-sm">
+              <a id="footer-phone-link" href="tel:01554451059" class="inline-flex items-center gap-2 text-on-surface hover:text-primary font-mono" dir="ltr">
+                <span class="material-symbols-outlined text-primary text-lg">call</span>
+                <span id="footer-extra-phones">01554451059</span>
+              </a>
+              <a id="footer-wa-btn" href="https://wa.me/201554451059" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded bg-[#25D366]/15 border border-[#25D366]/50 text-[#25D366] hover:bg-[#25D366]/25 font-bold w-fit transition-colors">
+                <span class="material-symbols-outlined text-lg">chat</span>
+                <span>تواصل واتساب مباشر</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Vodafone Cash Box -->
+          <div class="bg-surface-container border border-outline rounded-xl p-5 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="font-headline font-bold text-base text-on-surface flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
+                الدفع عبر فودافون كاش
+              </span>
+              <span class="text-xs px-2 py-0.5 rounded bg-primary-container text-primary font-semibold">فوري</span>
+            </div>
+            <div class="flex items-center justify-between bg-surface-container-high border border-outline-variant rounded-lg px-3 py-2">
+              <span id="footer-vfcash-num" class="font-mono text-lg font-bold text-primary tracking-wider" dir="ltr">01554451059</span>
+              <button id="copy-vfcash-btn" type="button" class="text-xs px-2.5 py-1 rounded bg-primary text-on-primary font-bold hover:bg-primary-hover cursor-pointer">
+                نسخ الرقم
+              </button>
+            </div>
+            <a id="vfcash-wa-receipt-link" href="https://wa.me/201554451059?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A8%D8%A7%D9%81%D8%B1%D9%88%D9%86%D8%A7%D8%8C%20%D9%87%D8%B0%D8%A7%20%D8%A5%D9%8A%D8%B5%D8%A7%D9%84%20%D8%AA%D8%AD%D9%88%D9%8A%D9%84%20%D9%81%D9%88%D8%AF%D8%A7%D9%81%D9%88%D9%86%20%D9%83%D8%A7%D8%B4" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-primary text-on-primary hover:bg-primary-hover font-bold text-xs transition-colors">
+              <span class="material-symbols-outlined text-base">receipt_long</span>
+              <span>إرسال صورة التحويل على واتساب 01554451059</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
+          <p>© 2026 <span id="copyright-name">بافرونا</span> لأدوات الحلاقة الفاخرة. جميع الحقوق محفوظة.</p>
+          <div class="flex items-center gap-4">
+            <a href="#home" class="hover:text-primary">العودة للأعلى</a>
+            <button id="footer-admin-btn" type="button" class="text-primary hover:underline cursor-pointer">فتح لوحة التحكم</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Floating Quick Navigation Buttons (زرار تنقل سريع) -->
+  <div class="fixed bottom-5 left-5 z-30 flex flex-col gap-2.5">
+    <a id="float-wa-btn" href="https://wa.me/201554451059" target="_blank" rel="noopener" title="تواصل واتساب" class="w-12 h-12 rounded-full bg-[#25D366] text-white shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
+      <span class="material-symbols-outlined text-2xl">chat</span>
+    </a>
+    <button id="scroll-top-btn" type="button" title="العودة للأعلى" class="w-12 h-12 rounded-full bg-surface-container-high text-primary border border-primary/60 shadow-lg flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors cursor-pointer">
+      <span class="material-symbols-outlined text-2xl">arrow_upward</span>
+    </button>
+  </div>
+
+  <!-- Quick View Product Modal -->
+  <dialog id="quick-view-modal" class="bg-surface-container text-on-surface border border-outline rounded-xl max-w-2xl w-[94%] p-0">
+    <header class="flex items-start justify-between gap-4 p-5 border-b border-outline-variant">
+      <div>
+        <span id="qv-brand" class="text-xs font-bold uppercase tracking-wider text-primary">الماركة</span>
+        <h2 id="qv-title" class="font-headline text-xl font-bold text-on-surface mt-0.5">اسم المنتج</h2>
+      </div>
+      <button id="close-qv-btn" type="button" aria-label="إغلاق" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-surface-container-high text-on-surface hover:text-primary border border-outline-variant cursor-pointer">
+        <span class="material-symbols-outlined text-lg">close</span>
+      </button>
+    </header>
+    <div class="p-5 grid grid-cols-1 sm:grid-cols-2 gap-5 items-center">
+      <div class="aspect-square rounded-lg overflow-hidden bg-surface-container-high border border-outline-variant">
+        <img id="qv-img" src="" alt="" class="w-full h-full object-cover">
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <span id="qv-price" class="font-mono text-2xl font-bold text-primary tabular-nums">0 ج.م</span>
+          <span id="qv-rating" class="font-mono text-xs text-on-surface-variant tabular-nums">4.9 ★</span>
+        </div>
+        <span id="qv-cat" class="text-xs px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant w-fit">القسم</span>
+        <p id="qv-specs" class="text-sm text-on-surface-variant leading-relaxed"></p>
+        <ul id="qv-bullets" class="flex flex-col gap-1.5 text-sm text-on-surface"></ul>
+      </div>
+    </div>
+    <footer class="flex items-center justify-end gap-3 p-5 border-t border-outline-variant bg-surface-container-low">
+      <button id="qv-cancel-btn" type="button" class="px-4 py-2.5 rounded border border-outline text-on-surface hover:border-primary text-sm font-semibold cursor-pointer">
+        إغلاق
+      </button>
+      <button id="qv-add-btn" type="button" class="px-6 py-2.5 rounded bg-primary text-on-primary hover:bg-primary-hover text-sm font-bold cursor-pointer">
+        إضافة للسلة
+      </button>
+    </footer>
+  </dialog>
+
+  <!-- Slide-Out Shopping Cart & WhatsApp Booking Drawer -->
+  <dialog id="cart-drawer" class="bg-surface-container text-on-surface border-r border-outline-variant m-0 mr-auto h-full max-h-none w-full max-w-md p-0">
+    <div class="flex flex-col h-full">
+      <header class="flex items-center justify-between p-5 border-b border-outline-variant">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl">shopping_bag</span>
+          <h2 class="font-headline text-xl font-bold text-on-surface">سلة المشتريات</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="clear-cart-btn" type="button" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded bg-error-container/60 text-error hover:bg-error-container text-xs font-bold cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-sm">delete_sweep</span>
+            <span>تفريغ السلة</span>
+          </button>
+          <button id="close-cart-btn" type="button" aria-label="إغلاق السلة" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-surface-container-high text-on-surface hover:text-primary border border-outline-variant cursor-pointer">
+            <span class="material-symbols-outlined text-lg">close</span>
+          </button>
+        </div>
+      </header>
+
+      <div id="cart-items-list" class="p-4 flex-1 overflow-y-auto flex flex-col gap-3">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Checkout & WhatsApp Booking Form inside Cart -->
+      <footer class="p-4 border-t border-outline-variant bg-surface-container-low space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-on-surface-variant">عدد القطع: <strong id="cart-total-qty" class="text-on-surface font-mono">0</strong></span>
+          <div class="text-left">
+            <span class="text-on-surface-variant ml-2">الإجمالي:</span>
+            <span id="cart-subtotal" class="font-mono text-xl font-bold text-primary tabular-nums">0 ج.م</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2 border-t border-outline-variant">
+          <input id="order-name" type="text" placeholder="الاسم بالكامل *" class="w-full bg-surface-container border border-outline-variant focus:border-primary rounded px-3 py-2 text-sm text-on-surface placeholder:text-on-surface-variant">
+          <input id="order-phone" type="tel" placeholder="رقم الموبايل / الواتساب *" class="w-full bg-surface-container border border-outline-variant focus:border-primary rounded px-3 py-2 text-sm text-on-surface placeholder:text-on-surface-variant">
+          <input id="order-address" type="text" placeholder="العنوان بالتفصيل أو ملاحظات" class="w-full bg-surface-container border border-outline-variant focus:border-primary rounded px-3 py-2 text-sm text-on-surface placeholder:text-on-surface-variant">
+          <select id="order-payment" class="w-full bg-surface-container border border-outline-variant focus:border-primary rounded px-3 py-2 text-sm text-on-surface">
+            <option value="الدفع عند الاستلام">طريقة الدفع: الدفع عند الاستلام</option>
+            <option value="فودافون كاش (01554451059)">طريقة الدفع: فودافون كاش (01554451059)</option>
+          </select>
+        </div>
+
+        <button id="whatsapp-checkout-btn" type="button" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-lg bg-[#25D366] text-white hover:bg-[#20bd5a] font-bold text-sm transition-colors cursor-pointer shadow-md">
+          <span class="material-symbols-outlined text-lg">send</span>
+          <span>تأكيد الحجز وإرسال الطلب على واتساب</span>
+        </button>
+      </footer>
+    </div>
+  </dialog>
+
+  <!-- Salon Appointment Booking Modal -->
+  <dialog id="booking-modal" class="bg-surface-container text-on-surface border border-outline rounded-xl max-w-lg w-[94%] p-0">
+    <header class="flex items-center justify-between p-5 border-b border-outline-variant">
+      <h2 class="font-headline text-xl font-bold text-primary">حجز موعد حلاقة في بافرونا</h2>
+      <button id="close-booking-btn" type="button" class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center cursor-pointer">
+        <span class="material-symbols-outlined text-lg">close</span>
+      </button>
+    </header>
+    <form id="booking-form" class="p-5 space-y-3">
+      <div>
+        <label class="block text-xs text-on-surface-variant mb-1">الاسم *</label>
+        <input id="book-name" type="text" required placeholder="اكتب اسمك" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm text-on-surface">
+      </div>
+      <div>
+        <label class="block text-xs text-on-surface-variant mb-1">رقم الموبايل *</label>
+        <input id="book-phone" type="tel" required placeholder="01xxxxxxxxx" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm text-on-surface">
+      </div>
+      <div>
+        <label class="block text-xs text-on-surface-variant mb-1">الخدمة المطلوبة</label>
+        <select id="book-service" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm text-on-surface">
+          <option value="قص شعر وتدريج احترافي">قص شعر وتدريج احترافي</option>
+          <option value="تحديد لحية وفوطة ساخنة بالموس">تحديد لحية وفوطة ساخنة بالموس</option>
+          <option value="باقة العريس المتكاملة">باقة العريس المتكاملة</option>
+          <option value="تنظيف بشرة بالبخار وماسك الفحم">تنظيف بشرة بالبخار وماسك الفحم</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs text-on-surface-variant mb-1">الموعد المفضل</label>
+        <input id="book-time" type="text" placeholder="مثلاً: اليوم الساعة 7 مساءً" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm text-on-surface">
+      </div>
+      <button type="submit" class="w-full py-3 rounded-lg bg-[#25D366] text-white hover:bg-[#20bd5a] font-bold text-sm cursor-pointer flex items-center justify-center gap-2 mt-2">
+        <span class="material-symbols-outlined text-lg">chat</span>
+        <span>إرسال الحجز على واتساب</span>
+      </button>
+    </form>
+  </dialog>
+
+  <!-- No-Code Admin Control Panel Modal (صفحة التحكم بدون أي كود) -->
+  <dialog id="admin-modal" class="bg-surface text-on-surface border border-outline rounded-xl max-w-5xl w-[96%] max-h-[92vh] p-0">
+    <div class="flex flex-col max-h-[92vh]">
+      <header class="flex flex-wrap items-center justify-between gap-3 p-5 border-b border-outline-variant bg-surface-container">
+        <div class="flex items-center gap-2.5">
+          <span class="material-symbols-outlined text-primary text-2xl">admin_panel_settings</span>
+          <div>
+            <h2 class="font-headline text-xl font-bold text-on-surface">لوحة تحكم بافرونا (بدون أي كود)</h2>
+            <p class="text-xs text-on-surface-variant">عدّل الأسعار، المنتجات، الصور، أرقام التواصل، ونصوص الموقع بضغطة زر</p>
+          </div>
+        </div>
+        <button id="close-admin-btn" type="button" class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center cursor-pointer hover:text-primary">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+      </header>
+
+      <!-- Admin Tabs -->
+      <div class="flex flex-wrap gap-2 px-5 py-3 bg-surface-container-low border-b border-outline-variant">
+        <button type="button" data-admin-tab="products" class="admin-tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-primary text-on-primary cursor-pointer">إدارة المنتجات (<span id="admin-prod-count">150</span>)</button>
+        <button type="button" data-admin-tab="add" class="admin-tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-surface-container-high text-on-surface border border-outline-variant cursor-pointer">+ إضافة منتج جديد</button>
+        <button type="button" data-admin-tab="settings" class="admin-tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-surface-container-high text-on-surface border border-outline-variant cursor-pointer">إعدادات الموقع والواتساب</button>
+        <button type="button" data-admin-tab="bulk" class="admin-tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-surface-container-high text-on-surface border border-outline-variant cursor-pointer">تعديل الأسعار والنسخ الاحتياطي</button>
+      </div>
+
+      <!-- Admin Content Body -->
+      <div class="p-5 overflow-y-auto flex-1 space-y-5">
+        <!-- Tab 1: Manage Products -->
+        <div id="admin-tab-products" class="admin-tab-panel space-y-4">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input id="admin-search-input" type="search" placeholder="ابحث عن منتج لتعديل اسمه أو سعره أو صورته..." class="flex-1 bg-surface-container border border-outline-variant rounded-lg px-4 py-2.5 text-sm text-on-surface">
+          </div>
+          <div id="admin-products-list" class="space-y-2.5">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Tab 2: Add New Product -->
+        <div id="admin-tab-add" class="admin-tab-panel hidden">
+          <form id="admin-add-form" class="bg-surface-container border border-outline-variant rounded-xl p-5 space-y-4 max-w-2xl">
+            <h3 class="font-headline text-lg font-bold text-primary">إضافة منتج حلاقة جديد</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">اسم المنتج *</label>
+                <input id="add-name" type="text" required class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">الماركة</label>
+                <input id="add-brand" type="text" value="Bavrona Pro" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">القسم</label>
+                <select id="add-category" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+                  <option value="ماكينات حلاقة وتحديد">ماكينات حلاقة وتحديد</option>
+                  <option value="أمواس وشفرات حلاقة">أمواس وشفرات حلاقة</option>
+                  <option value="مقصات حلاقة وتخفيف">مقصات حلاقة وتخفيف</option>
+                  <option value="العناية باللحية والشعر">العناية باللحية والشعر</option>
+                  <option value="أدوات ومستلزمات الصالون">أدوات ومستلزمات الصالون</option>
+                  <option value="كراسي وتجهيزات الصالون">كراسي وتجهيزات الصالون</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">السعر (ج.م) *</label>
+                <input id="add-price" type="number" min="1" required class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs text-on-surface-variant mb-1">رابط الصورة أو ارفع صورة من جهازك</label>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input id="add-image" type="text" placeholder="https://..." class="flex-1 bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+                <input id="add-image-file" type="file" accept="image/*" class="text-xs text-on-surface-variant">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs text-on-surface-variant mb-1">وصف مختصر</label>
+              <textarea id="add-specs" rows="2" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm"></textarea>
+            </div>
+            <button type="submit" class="px-6 py-2.5 rounded-lg bg-primary text-on-primary font-bold text-sm hover:bg-primary-hover cursor-pointer">
+              حفظ وإضافة للمتجر
+            </button>
+          </form>
+        </div>
+
+        <!-- Tab 3: Site Settings -->
+        <div id="admin-tab-settings" class="admin-tab-panel hidden">
+          <form id="admin-settings-form" class="bg-surface-container border border-outline-variant rounded-xl p-5 space-y-4">
+            <h3 class="font-headline text-lg font-bold text-primary">تعديل بيانات المتجر والواتساب</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">اسم الموقع</label>
+                <input id="set-siteName" type="text" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">الوصف أسفل اللوجو</label>
+                <input id="set-siteSubtitle" type="text" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">عنوان الواجهة الرئيسي (Hero Title)</label>
+                <input id="set-heroTitle" type="text" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">شارة الواجهة (Badge)</label>
+                <input id="set-heroBadge" type="text" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs text-on-surface-variant mb-1">نص الواجهة الترحيبي</label>
+                <textarea id="set-heroDesc" rows="2" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm"></textarea>
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">رقم الواتساب (بدون + مثل 201554451059)</label>
+                <input id="set-whatsappNumber" type="text" dir="ltr" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm font-mono">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">رقم فودافون كاش الظاهر</label>
+                <input id="set-vodafoneCashNumber" type="text" dir="ltr" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm font-mono">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">أرقام التواصل أسفل الموقع</label>
+                <input id="set-extraPhones" type="text" dir="ltr" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm font-mono">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">العملة (مثلاً ج.م)</label>
+                <input id="set-currency" type="text" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">العنوان</label>
+                <input id="set-address" type="text" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs text-on-surface-variant mb-1">مواعيد العمل</label>
+                <input id="set-workingHours" type="text" class="w-full bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              </div>
+            </div>
+            <button type="submit" class="px-6 py-2.5 rounded-lg bg-primary text-on-primary font-bold text-sm hover:bg-primary-hover cursor-pointer">
+              حفظ الإعدادات وتطبيقها فوراً
+            </button>
+          </form>
+        </div>
+
+        <!-- Tab 4: Bulk Price & Backup -->
+        <div id="admin-tab-bulk" class="admin-tab-panel hidden space-y-5">
+          <div class="bg-surface-container border border-outline-variant rounded-xl p-5 space-y-4">
+            <h3 class="font-headline text-lg font-bold text-primary">تعديل جماعي للأسعار (نسبة مئوية %)</h3>
+            <p class="text-xs text-on-surface-variant">مثال: اكتب 10 لزيادة الأسعار 10%، أو -10 لعمل خصم 10%.</p>
+            <div class="flex flex-wrap gap-3 items-center">
+              <select id="bulk-category" class="bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+                <option value="all">جميع المنتجات</option>
+                <option value="ماكينات حلاقة وتحديد">ماكينات حلاقة وتحديد</option>
+                <option value="أمواس وشفرات حلاقة">أمواس وشفرات حلاقة</option>
+                <option value="مقصات حلاقة وتخفيف">مقصات حلاقة وتخفيف</option>
+                <option value="العناية باللحية والشعر">العناية باللحية والشعر</option>
+                <option value="أدوات ومستلزمات الصالون">أدوات ومستلزمات الصالون</option>
+                <option value="كراسي وتجهيزات الصالون">كراسي وتجهيزات الصالون</option>
+              </select>
+              <input id="bulk-percent" type="number" placeholder="مثلاً: 10 أو -10" class="w-40 bg-surface-container-high border border-outline-variant rounded px-3 py-2 text-sm">
+              <button id="apply-bulk-price-btn" type="button" class="px-5 py-2 rounded bg-primary text-on-primary font-bold text-sm cursor-pointer">تطبيق على الأسعار</button>
+            </div>
+          </div>
+
+          <div class="bg-surface-container border border-outline-variant rounded-xl p-5 space-y-3">
+            <h3 class="font-headline text-lg font-bold text-on-surface">نسخ احتياطي واستعادة</h3>
+            <div class="flex flex-wrap gap-3">
+              <button id="export-data-btn" type="button" class="px-4 py-2 rounded border border-primary text-primary hover:bg-primary-container text-sm font-semibold cursor-pointer">تصدير البيانات (JSON)</button>
+              <button id="reset-defaults-btn" type="button" class="px-4 py-2 rounded bg-error-container text-error hover:opacity-90 text-sm font-semibold cursor-pointer">استعادة الـ 150 منتج والإعدادات الأصلية</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden px-4 py-3 rounded-lg bg-primary text-on-primary font-bold text-sm shadow-xl"></div>
+
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
